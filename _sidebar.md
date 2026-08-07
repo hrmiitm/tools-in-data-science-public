@@ -173,26 +173,45 @@
 </details>
 
 <details class="tds-week">
-<summary>Week 6: Web Scraping & Data Processing</summary>
+<summary>Week 6: Web Data Acquisition & OSINT</summary>
 
+- [⚖️ Legal & Ethical Scraping](2026-02/docs/week-6/legal-ethical-scraping.md)
+
+**Get the data**
+- [Hidden JSON APIs](2026-02/docs/week-6/hidden-json-apis.md)
+- [Sitemaps, RSS & Structured Data](2026-02/docs/week-6/sitemaps-rss-jsonld.md)
+- [Wayback Machine & Common Crawl](2026-02/docs/week-6/wayback-commoncrawl.md)
 - [Playwright & Selenium](2026-02/docs/week-6/playwright-selenium.md)
-- [Scrapy](2026-02/docs/week-6/scrapy.md)
+- [Playwright Advanced](2026-02/docs/week-6/playwright-advanced.md)
+- [Pagination & Infinite Scroll](2026-02/docs/week-6/pagination-infinite-scroll.md)
+- [Authenticated Scraping](2026-02/docs/week-6/authenticated-scraping.md)
+
+**Do it reliably**
+- [Rate Limits, Retries & Caching](2026-02/docs/week-6/rate-limits-retries-caching.md)
+- [Change Detection & Dedup](2026-02/docs/week-6/change-detection-dedup.md)
 - [Anti-bot Patterns](2026-02/docs/week-6/anti-bot-patterns.md)
-- [Crawl4AI](2026-02/docs/week-6/crawl4ai.md)
-- [Firecrawl & Apify](2026-02/docs/week-6/firecrawl-apify.md)
-- [Vision Models for Scraping](2026-02/docs/week-6/vision-models-for-scraping.md)
-- [Document Parsing](2026-02/docs/week-6/document-parsing.md)
+- [Cloudflare Bot Protection](2026-02/docs/week-6/cloudflare-bot.md)
+
+**Turn it into data**
+- [HTML → Markdown for LLMs](2026-02/docs/week-6/html-to-markdown.md)
 - [DuckDB + Parquet](2026-02/docs/week-6/duckdb-parquet.md)
+- [Document Parsing](2026-02/docs/week-6/document-parsing.md)
+
+**Beyond text**
+- [Vision Models for Scraping](2026-02/docs/week-6/vision-models-for-scraping.md)
 - [Image Processing Pipeline](2026-02/docs/week-6/image-processing-pipeline.md)
 - [Speech AI](2026-02/docs/week-6/speech-ai.md)
 - [Video Understanding](2026-02/docs/week-6/video-understanding.md)
-- [Firestore Database](2026-02/docs/week-6/firestore.md)
+
+**Find & automate**
+- [Google Dorking](2026-02/docs/week-6/google-dork.md)
+- [OSINT — Infrastructure & Records](2026-02/docs/week-6/osint.md)
 - [Scheduled Scraping](2026-02/docs/week-6/scheduled-scraping.md)
-- [LLM Architecture](2026-02/docs/week-6/llm-architecture.md)
 
 <div class="tds-link">
 
 [Lab: Scheduled scraper with GitHub Actions](2026-02/docs/labs/week-6/scheduled-scraper-github-actions-cron.md)
+[Lab: Open-Source Organisation Dossier](2026-02/docs/labs/week-6/osint-open-source-dossier.md)
 [Capstone: Job Posting Scraper](2026-02/docs/labs/week-6/capstone-job-posting-scraper-tracker.md)
 [Capstone: AI Signature Detection](2026-02/docs/labs/week-6/capstone-ai-signature-detection-cropper.md)
 [Capstone: Live Multilingual Translator](2026-02/docs/labs/week-6/capstone-live-multilingual-travel-translator.md)
@@ -203,11 +222,21 @@
 <details class="tds-week">
 <summary>Week 7: CI/CD, Security & Cloud</summary>
 
+**CI/CD & containers**
 - [GitHub Actions Advanced](2026-02/docs/week-7/01-github-actions-advanced.md)
 - [Advanced Docker](2026-02/docs/week-7/02-advanced-docker.md)
+
+**LLM security**
 - [LLM Security — Offensive](2026-02/docs/week-7/03-llm-security-offensive.md)
 - [LLM Safety — Defensive](2026-02/docs/week-7/04-llm-safety-defensive.md)
 - [OWASP LLM Top 10](2026-02/docs/week-7/05-owasp-llm-top-10.md)
+
+**Recon & defence**
+- [Cloudflare — Defender's Side](2026-02/docs/week-7/cloudflare-defender.md)
+- [Dorking for Recon & Exposure](2026-02/docs/week-7/dorking-recon.md)
+- [Person & Social OSINT](2026-02/docs/week-7/person-social-osint.md)
+
+**Cloud infrastructure**
 - [VMs & SSH](2026-02/docs/week-7/06-vms-ssh.md)
 - [Serverless Functions](2026-02/docs/week-7/07-serverless-functions.md)
 - [Terraform & IaC](2026-02/docs/week-7/08-terraform-iac.md)

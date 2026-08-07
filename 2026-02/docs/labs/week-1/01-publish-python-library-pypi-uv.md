@@ -640,7 +640,7 @@ Publish a Discourse blog post covering:
 
 ## Next Lab
 
-[**Lab 1.2 — Web Traffic Debugging with Burp Suite**](./02-burpsuite-traffic-debugging.md)
+[**Lab 1.2 — Web Traffic Debugging with Burp Suite**](/2026-02/docs/labs/week-1/02-burpsuite-traffic-debugging/)
 
 ---
 
