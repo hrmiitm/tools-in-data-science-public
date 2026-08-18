@@ -128,7 +128,7 @@ The course covers the typical data science workflow:
 | [Project 2][P2]             | **P2**          |    20% | Mon 17 Aug 2026            | Sat 05 Sep 2026            | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#project2)|
 | [Remote Online Exam][ROE]   | [**ROE**][ROE]  |    20% | Sun 02 Aug 2026 (01:00 PM) | Sun 02 Aug 2026 (01:45 PM) | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#roe)     |
 | [Week-7][GA7]               | [**GA7**][GA7]  | —      | Sun 09 Aug 2026            | Fri 21 Aug 2026            | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#week7)   |
-| [Week-8][GA8]               | [**GA8**][GA8]  | —      | Wed 12 Aug 2026            | Sun 23 Aug 2026            | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#week8)   |
+| [Week-8][GA8]               | [**GA8**][GA8]  | —      | Tue 18 Aug 2026            | Fri 28 Aug 2026            | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#week8)   |
 | Final end-term (in-person)  | **F**           |    20% | Sun 13 Sep 2026            | Sun 13 Sep 2026            | [Feedback](https://exam.sanand.workers.dev/tds-2026-05-feedback#endterm) |
 
 
