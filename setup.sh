@@ -144,20 +144,13 @@ for course in "${COURSE_DIRS[@]}"; do
   fi
 done
 
-# Copy versioned and non-ignored working-tree markdown into Hugo content in bulk.
-# This includes new lesson files before they are staged, while filtering out
-# paths deleted locally but still present in Git's index.
+# Copy tracked markdown into Hugo content in bulk.
 # Behavior:
 # - skip docsify sidebar files
 # - map README.md -> _index.md for clean section URLs
 # - rewrite `images/` links to absolute `/images/`
 mapfile -t MD_FILES < <(
-  git -C "$ROOT_DIR" ls-files --cached --others --exclude-standard '*.md' | grep -v '_sidebar.md' |
-    while IFS= read -r rel; do
-      if [[ -f "$ROOT_DIR/$rel" ]]; then
-        printf '%s\n' "$rel"
-      fi
-    done
+  git -C "$ROOT_DIR" ls-files '*.md' | grep -v '_sidebar.md'
 )
 if [[ ${#MD_FILES[@]} -gt 0 ]]; then
   tar -cf - -C "$ROOT_DIR" "${MD_FILES[@]}" | tar -xf - -C "$CONTENT_DIR"
@@ -167,12 +160,7 @@ fi
 # This ensures links like `/2025-09/system-requirements/` resolve and keep
 # course-specific sidebar context while navigating.
 mapfile -t SHARED_MD_FILES < <(
-  git -C "$ROOT_DIR" ls-files --cached --others --exclude-standard '*.md' | grep -E '^[^/]+\.md$' | grep -v -E '^README\.md$|^_sidebar\.md$' |
-    while IFS= read -r rel; do
-      if [[ -f "$ROOT_DIR/$rel" ]]; then
-        printf '%s\n' "$rel"
-      fi
-    done
+  git -C "$ROOT_DIR" ls-files '*.md' | grep -E '^[^/]+\.md$' | grep -v -E '^README\.md$|^_sidebar\.md$'
 )
 if [[ ${#SHARED_MD_FILES[@]} -gt 0 ]]; then
   for course in "${COURSE_DIRS[@]}"; do
@@ -186,17 +174,10 @@ find "$CONTENT_DIR" -name 'README.md' | while IFS= read -r file; do
   mv "$file" "$(dirname "$file")/_index.md"
 done
 
-# Copy all non-markdown versioned and non-ignored working-tree files as static
-# assets in bulk. This includes new lesson assets before staging and tolerates
-# locally deleted, unstaged files.
+# Copy all non-markdown tracked files as static assets in bulk.
 # Excluding build/config scaffolding files that should not be published as assets.
 mapfile -t STATIC_FILES < <(
-  git -C "$ROOT_DIR" ls-files --cached --others --exclude-standard | grep -Ev '\.md$|^hugo/|^\.github/|^\.gitignore$|^setup\.sh$' |
-    while IFS= read -r rel; do
-      if [[ -f "$ROOT_DIR/$rel" ]]; then
-        printf '%s\n' "$rel"
-      fi
-    done
+  git -C "$ROOT_DIR" ls-files | grep -Ev '\.md$|^hugo/|^\.github/|^\.gitignore$|^setup\.sh$'
 )
 if [[ ${#STATIC_FILES[@]} -gt 0 ]]; then
   tar -cf - -C "$ROOT_DIR" "${STATIC_FILES[@]}" | tar -xf - -C "$STATIC_DIR"
