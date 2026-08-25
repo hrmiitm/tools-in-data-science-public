@@ -7,6 +7,4 @@
 | C3 | [Job Posting Scraper & Tracker](/2026-02/docs/labs/week-6/capstone-job-posting-scraper-tracker/) | Week 06 | Hidden API → validated schema → SQLite state → Parquet → DuckDB dashboard |
 | C4 | [AI Signature Detection & Cropper](/2026-02/docs/labs/week-6/capstone-ai-signature-detection-cropper/) | Week 06 | Detect → crop → independent verifier, scored on precision/recall |
 | C5 | [Live Multilingual Travel Translator](/2026-02/docs/labs/week-6/capstone-live-multilingual-travel-translator/) | Week 06 | STT → translate → TTS pipeline |
-| C6 | [Production Fine-Tuned Model + Full MLOps](/2026-02/docs/labs/week-8/01-capstone-production-finetuned-model-mlops/) | Week 08 | QLoRA → MLflow → Vertex AI → publish |
-
 ---

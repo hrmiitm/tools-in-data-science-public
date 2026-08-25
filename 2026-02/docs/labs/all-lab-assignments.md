@@ -37,9 +37,4 @@
 - **Lab**: [Red-team your own LLM API (attack → defend → regression suite)](/2026-02/docs/labs/week-7/01-red-team-your-api-guardrails/)
 - **Lab**: [Full CI/CD: build → scan → Artifact Registry → deploy to Cloud Run](/2026-02/docs/labs/week-7/02-full-cicd-cloud-run/)
 
-## Week 08 — MLOps, Fine-Tuning & Model Publishing
-
-- **CAPSTONE**: [Production Fine-Tuned Model + Full MLOps](/2026-02/docs/labs/week-8/01-capstone-production-finetuned-model-mlops/)
-- **Lab**: [Full GCP pipeline (GCS → BigQuery ML → Vertex AI → Cloud Run)](/2026-02/docs/labs/week-8/02-full-gcp-pipeline-bqml-vertex-cloud-run/)
-
 ---

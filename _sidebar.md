@@ -262,13 +262,11 @@
 - [Fine-Tuning Techniques](2026-02/docs/week-8/06-finetuning-techniques.md)
 - [Quantization](2026-02/docs/week-8/07-quantization.md)
 - [Gemma 4 Fine-Tuning](2026-02/docs/week-8/08-gemma4-finetuning.md)
-- [GCP ML Pipeline](2026-02/docs/week-8/09-gcp-ml-pipeline.md)
 - [Model Publishing & Cards](2026-02/docs/week-8/10-model-publishing.md)
 
 <div class="tds-link">
 
-[Lab: Full GCP pipeline](2026-02/docs/labs/week-8/02-full-gcp-pipeline-bqml-vertex-cloud-run.md)
-[Capstone: Production Fine-Tuned Model](2026-02/docs/labs/week-8/01-capstone-production-finetuned-model-mlops.md)
+[Milestone: Full GCP Walkthrough](2026-02/docs/labs/week-8/09-full-gcp-walkthrough.md)
 
 </div>
 </details>
