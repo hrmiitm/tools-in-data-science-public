@@ -5,8 +5,7 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - main
-      - hugo
+      - bootcamp-sep-26
   workflow_dispatch:
 
 permissions:
@@ -20,9 +19,11 @@ concurrency:
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/bootcamp-sep-26'
     runs-on: ubuntu-latest
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
+      HUGO_BASEURL: https://hrmiitm.github.io/tools-in-data-science-public/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,6 +32,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "stable"
+          cache-dependency-path: hugo/go.sum
 
       - name: Setup Hugo Extended
         uses: peaceiris/actions-hugo@v3
@@ -46,11 +48,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugo-
 
-      - name: Build Site
-        run: ./setup.sh
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Build Site
+        run: |
+          ./setup.sh
+          # Publish to github.io without the upstream custom-domain file.
+          rm -f public/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
