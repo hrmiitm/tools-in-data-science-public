@@ -5,7 +5,7 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - bootcamp-sep-26
+      - main
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/bootcamp-sep-26'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
