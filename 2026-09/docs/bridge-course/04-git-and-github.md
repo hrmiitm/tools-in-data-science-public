@@ -9,98 +9,23 @@ By the end, your bridge notebook will have local snapshots, a copy on GitHub, an
 
 > Have your `bridge-lab` folder and a GitHub account ready. Practise inside this folder, not an existing course or work repository.
 
-## Hey, Let’s Play the Game!
+## Quick game: Oh My Git!
 
-> “Talk is cheap. If you want to convince me, do the WORK.” — [Linus Torvalds, Linux kernel mailing list](https://lkml.iu.edu/hypermail/linux/kernel/0009.2/0305.html)
+1. Download and open [Oh My Git!](https://ohmygit.org/) for your operating system.
+2. Start an introductory level and predict what an add or commit action will change.
+3. Play the action, inspect the visual result, and explain what Git staged or committed.
 
-| 🎮 **Choose your Git adventure** |
-| --- |
-| **Oh My Git!** helps you see what commands do. **Githug** checks your terminal solutions. Pick one for a short practice session after the lessons. |
+Use its practice repositories; stop before advanced topics.
 
-<details>
-<summary><strong>🎮 Oh My Git! · See your Git commands change a repository</strong></summary>
+## Optional game: Githug
 
-## Oh My Git! · Start with the visual game
+Use this only if you already have a compatible Ruby environment.
 
-| Play card | Your starting point |
-| --- | --- |
-| **Choose this when** | Staging and commits still feel abstract |
-| **Setup** | Download for Windows, macOS, or Linux |
-| **Access** | Free, open-source game |
-| **First win** | Explain the effect of one add/commit action |
+1. Run `gem install githug`, then create and enter `~/bridge-games/githug-practice`.
+2. Run `githug`, read the puzzle, make the Git change, then run `githug` again to check it.
+3. If stuck, run `githug hint`; use `githug reset` only inside the game's folder.
 
-[![Official Oh My Git! screenshot showing commits](https://ohmygit.org/assets/images/screenshots/commit.png)](https://ohmygit.org/)
-
-*Official Oh My Git! screenshot*
-
-### Features to explore
-
-- **Live repository view:** see the effect of your actions immediately.
-- **Command cards:** discover commands through their descriptions.
-- **Integrated terminal:** try real Git commands after learning the cards.
-- **Remote exercises:** explore collaboration later, beyond this bridge.
-
-### Install and play
-
-1. Follow [Download the game](https://ohmygit.org/) to the official itch.io page.
-2. Choose your operating system’s build, extract it, and open the application.
-3. On Windows, launch the graphical Windows game even if your course terminal uses WSL.
-4. Open an introductory level. Predict a card’s effect before playing it.
-5. Explain what changed; then try its command in the game terminal.
-
-Use the game’s practice repositories. Stop before advanced topics if you are still learning add and commit.
-
-- [ ] I predicted one action and checked the visual result.
-- [ ] I can describe what staging selects.
-
-[Official features and downloads](https://ohmygit.org/)
-
-</details>
-
-<details>
-<summary><strong>🎮 Githug · Solve Git puzzles in your terminal</strong></summary>
-
-## Githug · Type, check, improve
-
-| Play card | Your starting point |
-| --- | --- |
-| **Choose this when** | You want checked command-line challenges |
-| **Features** | Progressive puzzles, solution checking, hints, level resets |
-| **Needs** | Git and a compatible Ruby environment |
-| **First win** | Solve an introductory puzzle and explain your command |
-
-### Install
-
-The [official README](https://github.com/Gazler/githug#readme) flags Ruby 3+ incompatibility. Use an existing isolated Ruby environment below 3.0; otherwise start with Oh My Git! rather than downgrading system Ruby. [Ruby installation options](https://www.ruby-lang.org/en/documentation/installation/).
-
-```bash
-ruby --version
-gem --version
-gem install githug
-mkdir -p ~/bridge-games/githug-practice
-cd ~/bridge-games/githug-practice
-githug
-```
-
-### Play
-
-1. Accept creation of the game directory.
-2. Enter the generated `git_hug` folder.
-3. Read the challenge and solve it using Git.
-4. Run `githug` to check; use `githug hint` when stuck.
-5. Use `githug levels` to explore available puzzles.
-
-**Replay:** `githug reset` rebuilds the current level and can discard game files; use it only inside the game folder.
-
-Some puzzles expect `master`. Keep the course default `main`; scope the workaround to each game invocation:
-
-```bash
-GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=init.defaultBranch GIT_CONFIG_VALUE_0=master githug
-```
-
-- [ ] I solved a puzzle and explained why the check passed.
-
-</details>
+Githug may not work with Ruby 3+. If so, use Oh My Git! instead. [Githug instructions](https://github.com/Gazler/githug#readme)
 
 ## Learning path
 
@@ -251,6 +176,17 @@ git log --oneline
 
 `status` reports file state; `diff --cached` lets you inspect the staged snapshot (`q` exits a pager); `log` shows recorded commits. Confirm no passwords, tokens, or private keys are staged before committing.
 
+### Pause and explain
+
+**Why run `git diff --cached` instead of only looking at the file in your editor before committing?**
+
+<details>
+<summary>Check your explanation</summary>
+
+Git commits the staged snapshot, not automatically the latest working-file contents. `git diff --cached` shows exactly what the next commit would record, including whether you staged the intended files and avoided secrets.
+
+</details>
+
 ## Try it yourself
 
 Add a sentence to README, save it, then run `git add README.md` and `git commit -m "Explain what I learned"`.
@@ -307,6 +243,17 @@ ssh-add ~/.ssh/id_ed25519
 ```
 
 The agent holds the unlocked identity for your session. `ssh-add` may ask for your key’s passphrase, not your GitHub password. [GitHub’s key generation guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) covers OS-specific options.
+
+### Pause and explain
+
+**Why can you upload the `.pub` key to GitHub but must never share the matching private key?**
+
+<details>
+<summary>Check your explanation</summary>
+
+GitHub uses the public key to verify signatures made by the matching private key. The private key is the secret proof that you control that identity; anyone who obtains it may be able to authenticate as you, especially if they also obtain its passphrase.
+
+</details>
 
 ## Check
 

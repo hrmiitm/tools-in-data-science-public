@@ -9,93 +9,23 @@ Your browser talks to servers through requests and responses. You will inspect t
 
 > Have Chrome and curl ready. Use harmless practice text; the public httpbin service can see what you send.
 
-## Hey, Let’s Play the Game!
+## Quick game: OverTheWire Natas
 
-> “Since all models are wrong the scientist cannot obtain a ‘correct’ one by excessive elaboration.” — [George Box, “Science and Statistics”](https://doi.org/10.1080/01621459.1976.10480949)
+Use this only after the HTTP lessons and only on Natas's designated game hosts.
 
-| 🎮 **Find a clue. Unlock the next level.** |
-| --- |
-| Play **[OverTheWire: Natas](https://overthewire.org/wargames/natas/)** for real web puzzles. Use **[httpbin](https://httpbin.org/)** alongside it to experiment with requests. Start after the HTTP lessons. |
+1. Open [Natas Level 0](http://natas0.natas.labs.overthewire.org/) and sign in with the published `natas0` / `natas0` starter credentials.
+2. Open DevTools → **Network**, reload, and inspect the document response.
+3. Compare the page with its HTML, find the clue for the next login, and try Level 1.
 
-<details>
-<summary><strong>🎮 OverTheWire: Natas · Unlock the next web level</strong></summary>
+Keep game passwords private. [Natas rules and levels](https://overthewire.org/wargames/natas/)
 
-## Natas · Follow the web clues
+## Quick practice: httpbin
 
-| Play card | Your starting point |
-| --- | --- |
-| **Choose this when** | You want a web-security puzzle after practising HTTP |
-| **Setup** | Browser and DevTools; no installation or personal account |
-| **Access** | Free hosted wargame |
-| **First win** | Solve Level 0; levels 0–10 are an optional stretch |
+1. Run `curl -i 'https://httpbin.org/get?topic=bridge'` and find `topic` in the response.
+2. Run `curl -i 'https://httpbin.org/redirect/1'`, then repeat with `-L`.
+3. Explain: `-i` shows headers; `-L` follows the redirect.
 
-### Why this is a game
-
-Each level hides the credential for the next. Inspect pages, responses, and clues to progress. This is web-security practice, so later puzzles go beyond this bridge.
-
-### Start playing
-
-1. Read the [official Natas introduction](https://overthewire.org/wargames/natas/) and [game rules](https://overthewire.org/rules/).
-2. Open [Level 0](http://natas0.natas.labs.overthewire.org/).
-3. Use the published starter username **natas0** and password **natas0**.
-4. Read the challenge. Open DevTools → **Network**, reload, and inspect the document response.
-5. Compare what the browser displays with the HTML it received. Look for a clue before searching for a walkthrough.
-6. Use your discovery to try Level 1; record what you learned privately.
-
-### Your first win
-
-- [ ] I explained the evidence that unlocked the next level.
-- [ ] I recorded an HTTP observation without publishing a password.
-
-Practise only on the designated game hosts. Start with Level 0; continue toward Level 10 only if you enjoy the challenge.
-
-</details>
-
-<details>
-<summary><strong>🧪 httpbin · Experiment with requests and responses</strong></summary>
-
-## httpbin · Your HTTP practice bench
-
-| Practice card | Your starting point |
-| --- | --- |
-| **Choose this when** | You want to understand exactly what your request sends |
-| **Setup** | [Open httpbin](https://httpbin.org/); use curl from Module 1 |
-| **Access** | Free hosted playground; no account |
-| **First win** | Explain an echoed value, a status code, and a redirect |
-
-### Features worth trying
-
-- **Echo endpoints** show your query parameters, headers, or submitted data.
-- **Status endpoints** let you deliberately request responses such as `404`.
-- **Redirects and delays** let you observe browser behaviour without needing your own server.
-
-This is a playground, not a scored game. Use it to test an idea before returning to Natas.
-
-### Try three experiments
-
-Run these in your learning terminal:
-
-```bash
-curl -i 'https://httpbin.org/get?topic=bridge'
-curl -i 'https://httpbin.org/headers' -H 'X-Bridge-Practice: ready'
-curl -i 'https://httpbin.org/redirect/1'
-curl -i -L 'https://httpbin.org/redirect/1'
-```
-
-1. Find `topic=bridge` in the first response.
-2. Find your custom header in the second.
-3. Compare the last two requests: `-i` displays response headers; `-L` follows the redirect.
-4. Open [the same GET in Chrome](https://httpbin.org/get?topic=bridge), then inspect it in **Network**.
-5. Optional: request `https://httpbin.org/status/404` and explain why it is still an HTTP response.
-
-- [ ] I found my own data in an echoed response.
-- [ ] I can explain what following a redirect changes.
-
-Send invented practice data only. If the public service is unavailable, retry later.
-
-[Official httpbin endpoint explorer](https://httpbin.org/)
-
-</details>
+Use invented practice data only. [httpbin](https://httpbin.org/)
 
 ## Learning path
 
@@ -171,6 +101,17 @@ curl -i 'https://httpbin.org/get?topic=python&module=3'
 - **Quotes:** keep `&` from being interpreted by the shell.
 - **`-i`:** include response headers.
 
+### Pause and explain
+
+**Why does the URL need quotes in the terminal when it works unquoted in a browser address bar?**
+
+<details>
+<summary>Check your explanation</summary>
+
+In a shell, `&` has a special meaning: it can send a command to the background. Quotes pass the whole URL, including its query parameters, as one argument to `curl`. A browser address bar is not interpreting the URL with shell syntax.
+
+</details>
+
 ### Find three pieces of evidence
 
 - [ ] A success status.
@@ -243,6 +184,17 @@ curl -i 'https://httpbin.org/status/500'
 | `3xx` | Redirection, e.g. `302`; curl needs `-L` to follow |
 | `4xx` | Request cannot be fulfilled as sent, e.g. `400`, `401`, `403`, `404` |
 | `5xx` | Server-side failure, e.g. `500` |
+
+### Pause and explain
+
+**Why does a `404` or `500` still show that the client and server completed part of the round trip?**
+
+<details>
+<summary>Check your explanation</summary>
+
+Those codes are HTTP responses sent by a server or intermediary. The request did not succeed as intended, but receiving a status code proves that an HTTP response came back; a connection or DNS failure may produce no HTTP status at all.
+
+</details>
 
 ## Check
 
@@ -391,7 +343,7 @@ Choose one browser or HTTP playground after this module.
 
 - [httpbin](https://httpbin.org/) lets you experiment with request headers, redirects, status codes, and delays.
 - [Chrome DevTools demos](https://chrome.dev/devtools-network-activity/getstarted.html) provide a stable page for inspecting Network activity and editing the DOM.
-- [OverTheWire: Natas](https://overthewire.org/wargames/natas/) offers web-security puzzles. Start with the game card above; levels 0–10 are optional further exploration.
+- [OverTheWire: Natas](https://overthewire.org/wargames/natas/) offers web-security puzzles. Start with the quick game above; levels 0–10 are optional further exploration.
 
 **Try next:** pick one endpoint or one browser action, predict the result, then record the evidence you observe.
 

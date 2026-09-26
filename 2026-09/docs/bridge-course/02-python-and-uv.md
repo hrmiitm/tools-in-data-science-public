@@ -9,55 +9,16 @@ You will run the same small program in two environments, then let uv manage a st
 
 > Start with Module 1 complete. Keep your Python code outside `.venv`; that folder is for installed software.
 
-## Hey, Let’s Play the Game!
+## Quick game: CodeCombat
 
-> “We can only see a short distance ahead, but we can see plenty there that needs to be done.” — [Alan Turing](https://www.turing.ac.uk/blog/what-alan-turing-means-us)
+Use the free beginner levels to see Python-like instructions produce an immediate result.
 
-| 🎮 **Make your Python instructions come alive** |
-| --- |
-| Try **CodeCombat** for visual feedback and quick retries. Open the card for a short browser adventure, then bring the idea back to your own script. |
+1. Open [CodeCombat](https://codecombat.com/play) and select a beginner level and **Python**.
+2. Read the goal, predict what the supplied code will do, then run it.
+3. Change one instruction, run again, and state what changed.
+4. Stop after one completed level; if payment is requested, do not continue.
 
-<details>
-<summary><strong>🎮 CodeCombat · Write Python to guide your hero</strong></summary>
-
-## CodeCombat · Your first coding adventure
-
-| Play card | Your starting point |
-| --- | --- |
-| **Choose this when** | You want to see what a line of Python makes happen |
-| **Setup** | Browser only; no Python installation needed for the game |
-| **Access** | Introductory levels are free; later content may require payment |
-| **First win** | Complete one available beginner level and explain one instruction |
-
-[![Official CodeCombat gameplay screenshot](https://direct.codecombat.com/images/pages/about/screenshot_dungeon.png)](https://codecombat.com/play)
-
-*Official CodeCombat screenshot · [Open CodeCombat](https://codecombat.com/play)*
-
-### What makes it interesting?
-
-- **Code becomes movement:** see your character react to your instructions.
-- **A goal for each level:** solve a small problem instead of typing an isolated example.
-- **Quick retries:** change one instruction, run again, and compare the result.
-
-### Open and play
-
-1. Open [CodeCombat](https://codecombat.com/play) and choose an available beginner activity.
-2. Select **Python** when asked for a language. Follow any account prompt if you want to save progress.
-3. Read the goal and the commands offered by the level.
-4. Predict your character’s next action, then run your code.
-5. If the result differs, change one instruction and retry.
-6. Stop after one completed level. Write: “I changed ___, so the character ___.”
-
-**Free practice:** use the introductory levels currently offered. If the next activity requests payment, stop there; a purchase is not part of this course. See the [official access FAQ](https://discourse.codecombat.com/t/faq-check-before-posting/1027).
-
-### Connect it to the course
-
-The game provides its own character commands; they are not built-in Python functions. After Module 2, edit one message in `scripts/hello.py` and run `python3 scripts/hello.py`. Predict, run, and explain the result again. Use the module exercises to practise venv and uv.
-
-- [ ] I completed a level and explained one change.
-- [ ] I understand that running the browser game does not set up Python on my laptop.
-
-</details>
+CodeCombat's hero commands belong to the game. Then edit `scripts/hello.py` in this module to practise real local Python.
 
 ## Learning path
 
@@ -133,6 +94,17 @@ Here are the **two environment workflows** we will compare. These are not two in
 See [Python’s explanation](https://docs.python.org/3/library/venv.html) and [uv’s environment workflow](https://docs.astral.sh/uv/pip/environments/).
 
 We use **separate practice directories** to compare the workflows without accidentally reusing one environment. A third convenience, **uv script mode**, manages an environment automatically rather than making you activate one. You will try that later in this module.
+
+### Pause and explain
+
+**Why is `python -m pip install rich` safer here than typing `pip install rich`?**
+
+<details>
+<summary>Check your explanation</summary>
+
+`python -m pip` runs the `pip` belonging to the exact `python` command you chose. A bare `pip` can refer to a different installation, especially when several Python versions or environments exist.
+
+</details>
 
 ## Predict
 
@@ -277,6 +249,17 @@ ls -a
 | `uv.lock` | Resolved dependency versions |
 | `.venv/` | The local environment uv can recreate |
 
+### Pause and explain
+
+**Why keep both `pyproject.toml` and `uv.lock` if uv can recreate `.venv`?**
+
+<details>
+<summary>Check your explanation</summary>
+
+`pyproject.toml` states the dependencies you intend to use. `uv.lock` records the exact resolved versions used together. uv can rebuild the machine-specific `.venv` from those portable project files.
+
+</details>
+
 ## Check
 
 - [ ] I found `pyproject.toml`, `uv.lock`, and `.venv`.
@@ -377,7 +360,7 @@ Use one small script to strengthen your Python environment habits.
 
 - Re-run `scripts/check-in.py` from a newly opened terminal with `uv run --script scripts/check-in.py`.
 - Change one printed message, run it again, and use `cat scripts/check-in.py` to inspect its metadata.
-- Return to the **CodeCombat** game card above for a short Python adventure.
+- Return to the **CodeCombat** quick game above for a short Python adventure.
 
 **Try next:** explain to yourself which environment runs the script and where `rich` is declared.
 

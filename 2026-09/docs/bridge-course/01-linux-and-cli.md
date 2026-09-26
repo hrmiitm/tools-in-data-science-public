@@ -9,69 +9,16 @@ A terminal is a window for giving your computer written instructions. You will c
 
 > **Outcome:** navigate your own folders, install the essentials, and run a Bash script.
 
-## Hey, Let’s Play the Game!
+## Quick game: OverTheWire Bandit
 
-> “The best way to get something done was to do it.” — [Grace Hopper](https://media.defense.gov/2024/Nov/25/2003593626/-1/-1/0/PART%2520ONE%2520FUTURE%2520POSSIBILITIES%2520GRACE%2520HOPPER%2520TRANSCRIPT%2520NO%2520SUCH%2520PODCAST%2520NSA.PDF)
+After installing `ssh`, complete these three tiny command-line levels. Get the initial password from [Bandit Level 0](https://overthewire.org/wargames/bandit/bandit0.html); password input is invisible.
 
-| 🎮 **Turn your terminal into a dungeon** |
-| --- |
-| Play **Bashcrawl** when you want navigation to feel natural. Rooms are folders; scrolls are files. Finish the setup lesson, then try one room. |
+1. **Log in as `bandit0`:** `ssh -p 2220 bandit0@bandit.labs.overthewire.org`
+2. **Level 0 → 1:** run `cat readme`, copy its output, then `exit` and log in as `bandit1` with that output as the password.
+3. **Level 1 → 2:** run `cat ./-`, copy its output, then `exit` and log in as `bandit2`.
+4. **Level 2 → 3:** run `cat "./--spaces in this filename--"`, copy its output, then `exit` and log in as `bandit3`.
 
-<details>
-<summary><strong>🎮 Bashcrawl · Explore a terminal dungeon</strong></summary>
-
-## Bashcrawl · Every directory is a room
-
-| Play card | Your starting point |
-| --- | --- |
-| **Choose this when** | Paths, `cd`, and `ls` still feel unfamiliar |
-| **Setup** | Git and Bash in Ubuntu/WSL or macOS Terminal |
-| **Access** | Free download; no game account |
-| **First win** | Reach another room and explain the route back |
-
-### What makes it interesting?
-
-- **Real folders are the map:** navigation practice transfers directly to your own projects.
-- **Files contain clues:** reading a scroll gives your next task.
-- **Explore at your pace:** use familiar commands to find your way.
-
-### Download once
-
-Finish Module 1’s Git installation first. In your learning terminal, run:
-
-```bash
-mkdir -p ~/bridge-games
-cd ~/bridge-games
-git clone https://gitlab.com/slackermedia/bashcrawl.git
-cd bashcrawl/entrance
-cat scroll
-```
-
-- `mkdir -p` creates a home for practice games.
-- `git clone` downloads the public game; no GitHub account or SSH key is needed.
-- `cd` enters its entrance, and `cat` reads the first clue.
-- Already downloaded it? Skip cloning and run `cd ~/bridge-games/bashcrawl/entrance`.
-
-### Play your first room
-
-1. Run `pwd` to identify your current room.
-2. Run `ls` to discover exits and objects.
-3. Read the `scroll` and follow its instructions.
-4. Before using `cd`, predict where it will take you.
-5. Reach a new room, then explain how you would return.
-
-```text
-Read a scroll → choose an exit → move → look around → read the next clue
-```
-
-**When stuck:** `pwd` tells you where you are; `ls` shows what is here. Keep the game’s actions inside its downloaded directory.
-
-- [ ] I explored a new room using real shell commands.
-- [ ] I can explain one relative path without copying an example.
-
-[Official Bashcrawl project and setup instructions](https://gitlab.com/slackermedia/bashcrawl)
-
-</details>
+`./` makes a filename explicit, including one beginning with `-`. Quotes preserve the spaces. Keep passwords in private notes; use this game only on the intended OverTheWire host. [All Bandit levels](https://overthewire.org/wargames/bandit/)
 
 ## Learning path
 
@@ -170,6 +117,17 @@ Imagine you are at `/home/asha/bridge-lab`:
 | `cd ~/bridge-lab` | Your home’s `bridge-lab` directory |
 
 `cd` changes directory; it does not create one. Quote names containing spaces: `cd "class notes"`. Linux names are case-sensitive: `Notes` and `notes` differ. Common macOS filesystems may ignore case, so use the exact spelling everywhere.
+
+### Pause and explain
+
+**Why can `cd notes` mean a different destination for two people?**
+
+<details>
+<summary>Check your explanation</summary>
+
+`notes` is a relative path, so the shell starts from each person's current directory. An absolute path, such as `/home/asha/bridge-lab/notes`, has the same destination regardless of where the command begins.
+
+</details>
 
 ## Predict
 
@@ -317,7 +275,16 @@ Not through the normal file write permission: the owner has `r--`, without `w`. 
 
 </details>
 
-**Why `./`?** A shell searches configured program directories, called `PATH`, for commands like `ls`. `./hello.sh` explicitly points to a file in the current directory.
+### Pause and explain
+
+**Why must you type `./hello.sh` instead of just `hello.sh` for a script in the current directory?**
+
+<details>
+<summary>Check your explanation</summary>
+
+A shell searches the configured program directories in `PATH` for a bare command such as `ls`. `./hello.sh` explicitly names a file in the current directory. Keeping the current directory out of `PATH` also helps prevent an unexpected local file from running merely because it has the same name as a command.
+
+</details>
 
 </details>
 
@@ -332,7 +299,7 @@ Install in your chosen terminal. A package manager downloads software and its su
 
 ```bash
 sudo apt update
-sudo apt install curl git nano python3 python3-venv podman
+sudo apt install curl git nano openssh-client python3 python3-venv podman
 ```
 
 - **`apt update`:** refresh the package catalogue; it does not upgrade all installed software.
@@ -343,6 +310,7 @@ sudo apt install curl git nano python3 python3-venv podman
 | `curl` | Send web requests |
 | `git` | Record versions |
 | `nano` | Edit text |
+| `openssh-client` | Connect to Bandit and GitHub using SSH |
 | `python3` | Run Python |
 | `python3-venv` | Enable Python’s built-in environment creation |
 | `podman` | Run containers (packaged applications); here you only install and verify it |
@@ -353,7 +321,7 @@ See [Podman’s Ubuntu instructions](https://podman.io/docs/installation) for th
 
 No Linux installation is needed.
 
-1. Check the tools: `curl --version`, `git --version`, `nano --version`, and `python3 --version`.
+1. Check the tools: `curl --version`, `git --version`, `nano --version`, `ssh -V`, and `python3 --version`.
 2. **Git missing?** Accept Apple’s command-line tools installer if prompted, or run `xcode-select --install`.
 3. **Python missing?** Use the [official macOS installer](https://www.python.org/downloads/macos/) and reopen Terminal. It includes `venv`; do not run `apt` on macOS.
 4. **nano missing?** Use your existing plain-text editor to create the named files.
@@ -433,6 +401,17 @@ chmod u+x scripts/hello.sh
 
 `bash file` asks Bash to read the file. `./file` executes it directly using the first line and needs execute permission. Both should print `Hello, Explorer!` and a path ending in `/bridge-lab`.
 
+### Pause and explain
+
+**Why can `bash scripts/hello.sh` work before `chmod u+x scripts/hello.sh`, while `./scripts/hello.sh` cannot?**
+
+<details>
+<summary>Check your explanation</summary>
+
+In the first command, you run the already-executable Bash program and give it the script as input. In the second, the operating system is asked to execute the script file itself, so that file needs its execute permission and a usable first line identifying Bash.
+
+</details>
+
 ### Change something
 
 1. Replace `Explorer` with your name and run the script again.
@@ -483,7 +462,7 @@ Write one useful command and one solved error in `notes/shell.txt`. If setup is 
 
 ## Explore yourself
 
-Return to the **Bashcrawl** game card above for a guided first session. Try reaching a room without copying navigation commands, then draw the route in your notes.
+Return to the **OverTheWire Bandit** quick game above after setup. Complete the three file-reading levels and write down the command each one taught you.
 
 
 ---
